@@ -115,3 +115,4 @@ function formlogin() {
 
 // export {ruta}
 export default formlogin
+export {adminState}

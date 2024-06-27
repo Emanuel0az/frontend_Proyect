@@ -2,11 +2,12 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import {adminState} from '../login/Login'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './navbar.css'
 
 function Navbar_home() {
-
+  adminState  = false
 
   return (
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
@@ -16,7 +17,7 @@ function Navbar_home() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="about">Sobre Nosotros</Nav.Link>
-            <Nav.Link href="#"></Nav.Link>
+            <Nav.Link href="#">Contactanos</Nav.Link>
             <NavDropdown title="Categorias" id="collapsible-nav-dropdown">
               <NavDropdown.Item href="#">Clasicas</NavDropdown.Item>
               <NavDropdown.Item href="#">
@@ -25,7 +26,7 @@ function Navbar_home() {
               <NavDropdown.Item href="#">Something</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#">
-                Contactanos
+                ADMIN
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
