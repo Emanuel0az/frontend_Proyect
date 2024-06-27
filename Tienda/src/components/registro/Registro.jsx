@@ -1,6 +1,6 @@
 import {useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { addPost } from "../../services/postApi"
+import { addUsers } from "../../services/postApi"
 import './registro.css'
 
 function Formregistro() {
@@ -26,7 +26,7 @@ function Formregistro() {
     const inputErrors = validate();
     if (Object.keys(inputErrors).length === 0) {
 
-      const result = await addPost(username,email,password)
+      const result = await addUsers(username,email,password)
       if (result) {
       alert ('Registro Exitoso')
       userAutenticated = true
@@ -43,22 +43,12 @@ function Formregistro() {
   };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   return (
   <div>
+    <div className="title">
     <h2>Registro</h2>
+    <h2 className="home"><Link to="/">Home</Link></h2>
+    </div>
     <div className="registro_css">
     <form onSubmit={handleSubmit}>
         <div>

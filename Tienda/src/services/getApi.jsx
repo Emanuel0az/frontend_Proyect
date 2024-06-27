@@ -1,6 +1,6 @@
 export const login = async (correo,clave) => {
     try {
-        const response = await fetch("http://localhost:3001/usuarios", {
+        const response = await fetch("http://localhost:3002/usuarios", {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json'

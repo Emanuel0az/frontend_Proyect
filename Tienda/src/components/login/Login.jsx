@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom"
-import { login } from "../../services/getAPI"
+import { login } from "../../services/getApi"
 import { useState } from "react";
 import './login.css'
 
@@ -21,16 +21,40 @@ function formlogin() {
     const inputErrors = validate(); // llama a la funcion que valida los espacios vacios
     
     if (Object.keys(inputErrors).length === 0) { //valida que no haya errores en las anteriores validaciones para ejecutar lo siguiente
+        let adminState = false
+        
+        const admin = {         
+           correo: "admin@gmail.com",
+           clave: "admin1234"
+          }
 
-      const result = await login(email,password) //variable que espera al llamado de la api
-      const user = result.find(user => user.correo === email && user.clave === password); // validacion para encontrar al usuario 
+          if (admin.correo===email && admin.clave === password) {
+            alert('Admin access')
+            navigate('/');
+            adminState = true
+          }else{
+            const result = await login(email,password) //variable que espera al llamado de la api
+
+            console.log(result)
+            const user = result.find(user => user.correo === email && user.clave === password); // validacion para encontrar al usuario 
+
+         // validacion para alertas y links
+
+          localStorage.setItem ('UserId',user.id)
+          console.log('Formulario enviado', { email, password }); // mensaje en la consola 
+          alert('Login Exitoso'); // alerta de inicio de sesion exitoso
+         // navigate('/'); // metodo que redirige a otra pagina una vez echo el login
+        
+
+          }
+
+
+       
       
-      if (user) { // validacion para alertas y links
-        localStorage.setItem ('UserId',user.id)
-        console.log('Formulario enviado', { email, password }); // mensaje en la consola 
-        alert('Login Exitoso'); // alerta de inicio de sesion exitoso
-        navigate('/dashboard'); // metodo que redirige a otra pagina una vez echo el login
-      }
+
+      
+
+      
     
       
     } else {
@@ -49,7 +73,10 @@ function formlogin() {
 
   return (
     <div>
+          <div className="title">
             <h2>Inicio de Sesión</h2>
+            <h2 className="home"><Link to="/">Home</Link></h2>
+            </div>
             <div className="login_css">
             <form onSubmit={handleSubmit}>
                 <div>

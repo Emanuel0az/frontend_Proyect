@@ -7,6 +7,12 @@
 
 h2 {
     font-size: 30px;
+    color: #000000;
+}
+
+.home {
+    color: #000000;
+    font-size: 30px;
 }
 
 body {
@@ -25,6 +31,10 @@ body {
     padding: 20px 25px;
     box-shadow: 0 5px 10px rgba(71,3,6,0.7);
     border-radius: 10px;
+}
+.title {
+    display: flex;
+    justify-content: space-between;
 }
 
 .registro_css .title {

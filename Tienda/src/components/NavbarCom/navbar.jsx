@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './navbar.css'
 
 function Navbar_home() {
+
+
   return (
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
       <Container>
@@ -13,23 +15,23 @@ function Navbar_home() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#">Sobre Nosotros</Nav.Link>
+            <Nav.Link href="about">Sobre Nosotros</Nav.Link>
             <Nav.Link href="#"></Nav.Link>
-            <NavDropdown title="Dropdown" id="collapsible-nav-dropdown">
-              <NavDropdown.Item href="#">Action</NavDropdown.Item>
+            <NavDropdown title="Categorias" id="collapsible-nav-dropdown">
+              <NavDropdown.Item href="#">Clasicas</NavDropdown.Item>
               <NavDropdown.Item href="#">
                 Another action
               </NavDropdown.Item>
               <NavDropdown.Item href="#">Something</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#">
-                Separated link
+                Contactanos
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link href="#">Registrate</Nav.Link>
-            <Nav.Link eventKey={2} href="#">
+            <Nav.Link href="register">Registrate</Nav.Link>
+            <Nav.Link href="login">
               Iniciar Sesion
             </Nav.Link>
           </Nav>

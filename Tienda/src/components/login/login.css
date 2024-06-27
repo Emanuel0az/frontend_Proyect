@@ -17,6 +17,11 @@ body {
     background: linear-gradient(to right, rgb(122, 241, 62), rgb(50,142,5));
 }
 
+.title {
+    display: flex;
+    justify-content: space-between;
+}
+
 .login_css {
     display: flex;
     flex-direction: column;

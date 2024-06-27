@@ -1,10 +1,23 @@
 {
-    "productos": [
-        {
-            "id": "1",
-            "gorra": "gorras",
-            "marca": "ramdom",
-            "precio": "23000"
-        }
-    ]
+  "productos": [
+    {
+      "id": "1",
+      "gorra": "gorras",
+      "marca": "ramdom",
+      "precio": "23000"
+    }
+  ],
+  "usuarios": [
+    {
+      "usuario": "emanuel",
+      "correo": "emanuel@gmail.com",
+      "clave": "1234"
+    },
+    {
+      "id": "284b",
+      "name": "ema",
+      "correo": "ema@gmail.com",
+      "clave": "1234"
+    }
+  ]
 }
