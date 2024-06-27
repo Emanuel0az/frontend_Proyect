@@ -1,6 +1,6 @@
 import {useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { addPost } from "../services/postApi"
+import { addPost } from "../../services/postApi"
 import './registro.css'
 
 function Formregistro() {
