@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { login } from "../../services/getApi"
 import { useState } from "react";
 import './login.css'
+export let adminState = false
 
 function formlogin() {
   const [email, setEmail] = useState('');//variable declarada que tiene el valor del input
@@ -21,7 +22,6 @@ function formlogin() {
     const inputErrors = validate(); // llama a la funcion que valida los espacios vacios
     
     if (Object.keys(inputErrors).length === 0) { //valida que no haya errores en las anteriores validaciones para ejecutar lo siguiente
-        let adminState = false
         
         const admin = {         
            correo: "admin@gmail.com",
@@ -115,4 +115,3 @@ function formlogin() {
 
 // export {ruta}
 export default formlogin
-export {adminState}

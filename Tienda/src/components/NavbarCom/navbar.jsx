@@ -7,7 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './navbar.css'
 
 function Navbar_home() {
-  adminState  = false
+console.log(adminState);
+  
 
   return (
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
