@@ -8,17 +8,19 @@ import './navbar.css'
 
 function Navbar_home() {
 console.log(adminState);
-  
+  if (adminState === true) {
+    
+  }
 
   return (
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#">Shop</Navbar.Brand>
+        <Navbar.Brand href="home">Shop</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="about">Sobre Nosotros</Nav.Link>
-            <Nav.Link href="#">Contactanos</Nav.Link>
+            <Nav.Link href="contacto">Contactanos</Nav.Link>
             <NavDropdown title="Categorias" id="collapsible-nav-dropdown">
               <NavDropdown.Item href="#">Clasicas</NavDropdown.Item>
               <NavDropdown.Item href="#">
@@ -26,7 +28,7 @@ console.log(adminState);
               </NavDropdown.Item>
               <NavDropdown.Item href="#">Something</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#">
+              <NavDropdown.Item href="#" >
                 ADMIN
               </NavDropdown.Item>
             </NavDropdown>

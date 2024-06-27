@@ -34,13 +34,9 @@ function formlogin() {
             adminState = true
           }else{
             const result = await login(email,password) //variable que espera al llamado de la api
-
-            console.log(result)
             const user = result.find(user => user.correo === email && user.clave === password); // validacion para encontrar al usuario 
 
          // validacion para alertas y links
-
-          localStorage.setItem ('UserId',user.id)
           console.log('Formulario enviado', { email, password }); // mensaje en la consola 
           alert('Login Exitoso'); // alerta de inicio de sesion exitoso
          // navigate('/'); // metodo que redirige a otra pagina una vez echo el login
@@ -75,7 +71,6 @@ function formlogin() {
     <div>
           <div className="title">
             <h2>Inicio de Sesión</h2>
-            <h2 className="home"><Link to="/">Home</Link></h2>
             </div>
             <div className="login_css">
             <form onSubmit={handleSubmit}>

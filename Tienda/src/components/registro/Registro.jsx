@@ -47,7 +47,6 @@ function Formregistro() {
   <div>
     <div className="title">
     <h2>Registro</h2>
-    <h2 className="home"><Link to="/">Home</Link></h2>
     </div>
     <div className="registro_css">
     <form onSubmit={handleSubmit}>
