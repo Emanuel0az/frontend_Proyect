@@ -4,7 +4,7 @@ import Login from '../pages/page_Login'
 import  Home  from "../pages/home"
 import Register from '../pages/page_Resgister'
 import About from '../pages/about/about'
-import Contacto from '../pages/contacto/contacto'
+import Contacto from '../components/contacto/contacto'
 function routing() {
   return (
     <div>
