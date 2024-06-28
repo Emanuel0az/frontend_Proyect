@@ -1,6 +1,5 @@
 import React from 'react'
 import '../about/about.css'
-import Form from 'react-bootstrap/Form';
 const about = () => {
   return (
     <div>

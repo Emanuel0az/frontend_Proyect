@@ -34,16 +34,6 @@ const contacto = () => {
 </p>
       <form className="contacto" onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="name" className="contacto_label">Nombre</label>
-          <input 
-            type="text" 
-            id="name" 
-            name="name" 
-            className="contacto_input" 
-            value={formData.name}
-            onChange={handleChange}
-            required 
-          />
         </div>
         <div className="mb-3">
           <label htmlFor="email" className="contacto_label">Correo Electrónico</label>

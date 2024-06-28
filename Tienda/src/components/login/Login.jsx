@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { login } from "../../services/getApi"
 import { useState } from "react";
 import './login.css'
-export let adminState = false
+
 
 function formlogin() {
   const [email, setEmail] = useState('');//variable declarada que tiene el valor del input
@@ -23,15 +23,16 @@ function formlogin() {
     
     if (Object.keys(inputErrors).length === 0) { //valida que no haya errores en las anteriores validaciones para ejecutar lo siguiente
         
-        const admin = {         
+        const admin = {      
+            id: "ADMIN",   
            correo: "admin@gmail.com",
            clave: "admin1234"
           }
 
           if (admin.correo===email && admin.clave === password) {
             alert('Admin access')
-            navigate('/');
-            adminState = true
+            navigate('/admin');
+            localStorage.setItem('Admin_ID',admin.id)
           }else{
             const result = await login(email,password) //variable que espera al llamado de la api
             const user = result.find(user => user.correo === email && user.clave === password); // validacion para encontrar al usuario 

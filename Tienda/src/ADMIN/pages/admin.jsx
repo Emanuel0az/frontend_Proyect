@@ -1,10 +1,15 @@
-import Navbar_home  from "../components/NavbarCom/navbar"
+import Navbar_home  from "/Users/Dell/Desktop/frontend_Proyect/Tienda/src/components/NavbarCom/navbar"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from '../components/card/card'
 
+
+
 import React from 'react'
 
-const Home = () => {
+const admin = () => {
+
+
+  
   return (
     <div>
         <h1>Home</h1>
@@ -15,4 +20,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default admin

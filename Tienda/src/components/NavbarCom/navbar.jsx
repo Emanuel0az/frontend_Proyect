@@ -2,16 +2,20 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import {adminState} from '../login/Login'
+import { Link } from 'react-router-dom';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './navbar.css'
 
 function Navbar_home() {
-console.log(adminState);
-  if (adminState === true) {
-    
+  function remove() {
+    localStorage.removeItem('Admin_ID')
+    removido = true
+    if (removido === true) {
+      
+    }
   }
-
+  
   return (
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
       <Container>
@@ -19,6 +23,7 @@ console.log(adminState);
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
+          
             <Nav.Link href="about">Sobre Nosotros</Nav.Link>
             <Nav.Link href="contacto">Contactanos</Nav.Link>
             <NavDropdown title="Categorias" id="collapsible-nav-dropdown">
@@ -31,6 +36,9 @@ console.log(adminState);
               <NavDropdown.Item href="#" >
                 ADMIN
               </NavDropdown.Item>
+              <button className='btns_card' onClick={remove}><Link to="/home" className="nav-links">
+        salir
+            </Link></button>
             </NavDropdown>
           </Nav>
           <Nav>
