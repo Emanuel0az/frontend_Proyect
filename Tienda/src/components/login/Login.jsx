@@ -40,7 +40,7 @@ function formlogin() {
          // validacion para alertas y links
           console.log('Formulario enviado', { email, password }); // mensaje en la consola 
           alert('Login Exitoso'); // alerta de inicio de sesion exitoso
-         // navigate('/'); // metodo que redirige a otra pagina una vez echo el login
+         navigate('/'); // metodo que redirige a otra pagina una vez echo el login
         
 
           }

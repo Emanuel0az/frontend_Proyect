@@ -1,4 +1,4 @@
-export const addPost = async (gorra, marca, precio) => {
+export const addPost = async (imagen,gorra, marca, precio) => {
     try {
         const response = await fetch("http://localhost:3002/productos", {
             method: "POST",
@@ -6,6 +6,7 @@ export const addPost = async (gorra, marca, precio) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                img: imagen,
                 item: gorra,
                 tipo: marca,
                 cantidad: precio

@@ -46,7 +46,7 @@ function Formregistro() {
   return (
   <div>
     <div className="title">
-    <h2>Registro</h2>
+    <h2 className="title_regi">Registro</h2>
     </div>
     <div className="registro_css">
     <form onSubmit={handleSubmit}>

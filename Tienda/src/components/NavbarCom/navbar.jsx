@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import AddForm from '../addForm/addForm';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './navbar.css'
 
@@ -27,6 +27,10 @@ function Navbar_home() {
       
     }
   }
+
+  function agregar() {
+    
+  }
   
   return (
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
@@ -45,8 +49,8 @@ function Navbar_home() {
               </NavDropdown.Item>
               <NavDropdown.Item href="#">Something</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#" style={{ display: boton }}>
-                Agregar
+              <NavDropdown.Item href="#" style={{ display: boton }} onClick={agregar}>
+                <AddForm />
               </NavDropdown.Item>
               <button className='btns_nav' onClick={remove} style={{ display: boton }}><Link to="/home" className="nav-links">
         salir
