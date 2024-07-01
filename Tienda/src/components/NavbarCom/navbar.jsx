@@ -2,12 +2,24 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './navbar.css'
 
 function Navbar_home() {
+  const [boton, setBoton] = useState('none');
+
+  useEffect(() => {
+    if (localStorage.getItem('Admin_ID') === 'ADMIN') {
+      setBoton('block');
+    } else {
+      setBoton('none');
+    }
+  }, []);
+
+
   function remove() {
     localStorage.removeItem('Admin_ID')
     removido = true
@@ -33,10 +45,10 @@ function Navbar_home() {
               </NavDropdown.Item>
               <NavDropdown.Item href="#">Something</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#" >
-                ADMIN
+              <NavDropdown.Item href="#" style={{ display: boton }}>
+                Agregar
               </NavDropdown.Item>
-              <button className='btns_card' onClick={remove}><Link to="/home" className="nav-links">
+              <button className='btns_nav' onClick={remove} style={{ display: boton }}><Link to="/home" className="nav-links">
         salir
             </Link></button>
             </NavDropdown>
