@@ -1,9 +1,19 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import React, { useState, useEffect } from 'react';
 import './card.css'
 
 function card() {
 
+  const [boton, setBoton] = useState('none');
+
+  useEffect(() => {
+    if (localStorage.getItem('Admin_ID') === 'ADMIN') {
+      setBoton('block');
+    } else {
+      setBoton('none');
+    }
+  }, []);
   function edit_Put (){
 
   }
@@ -17,7 +27,7 @@ function card() {
         </Card.Text>
         <div className='btn_cards'>
         <Button variant="primary" className='btns_card'>Buy</Button>
-        <Button variant="primary" className='btns_card' onClick={edit_Put}>Edit</Button>
+        <Button variant="primary" className='btns_card' onClick={edit_Put} style={{ display: boton }}>Edit</Button>
         </div>
       </Card.Body>
     </Card>

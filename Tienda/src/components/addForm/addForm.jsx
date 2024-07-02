@@ -6,41 +6,49 @@ import { Modal as BaseModal } from '@mui/base/Modal';
 import { addPost } from '../../services/postApi';
 import { useState } from 'react';
 
-export default async function addForm() {
-//   const [open, setOpen] = React.useState(false);
+export default function AddForm() {
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [imagen, setImagen] = useState('')
-  const [clase, setClase] = useState('')
-  const [nombre, setNombre] = useState('')
-  const [precio, setPrecio] = useState('')
-  const [errors, setErrors] = useState({})
+  const [imagen, setImagen] = useState('');
+  const [clase, setClase] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [precio, setPrecio] = useState('');
+  const [errors, setErrors] = useState({});
 
-  
-  // valida espacios vacios en los inputs y pone un mensaje
   const validate = () => {
-      let inputErrors = {};
-      if (!imagen) inputErrors.imagen = '';
-      if (!nombre) inputErrors.nombre = '';
-      if (!precio) inputErrors.precio = '';
-      return inputErrors;
+    let inputErrors = {};
+    if (!imagen) inputErrors.imagen = 'La imagen es requerida';
+    if (!nombre) inputErrors.nombre = 'El nombre es requerido';
+    if (!precio) inputErrors.precio = 'El precio es requerido';
+    return inputErrors;
   };
-
 
   const añadir = async (event) => {
     event.preventDefault();
     const inputErrors = validate();
     if (Object.keys(inputErrors).length === 0) {
-
-      const result = await addPost(imagen,nombre,precio)
-      if (result) {
-      alert ('Articulo Registrado')
+      try {
+        const result = await addPost(imagen, nombre, precio);
+        if (result) {
+          alert('Artículo Registrado');
+          setImagen('');
+          setClase('');
+          setNombre('');
+          setPrecio('');
+          setErrors({});
+          handleClose();
+        } else {
+          alert('Error al registrar el artículo');
+        }
+      } catch (error) {
+        alert('Hubo un error al enviar los datos a la API');
+        console.error(error);
       }
-      
     } else {
-        setErrors(inputErrors);
-        alert ('Ingrese datos')
+      setErrors(inputErrors);
+      alert('Por favor, complete todos los campos requeridos');
     }
   };
 
@@ -52,46 +60,49 @@ export default async function addForm() {
       <Modal
         aria-labelledby="unstyled-modal-title"
         aria-describedby="unstyled-modal-description"
-        // open={open}
+        open={open}
         onClose={handleClose}
         slots={{ backdrop: StyledBackdrop }}
       >
         <ModalContent sx={{ width: 400 }}>
-            <label >Imagen del Producto:</label>
-            <input 
-            type="text" 
-            value={imagen}
-            onChange={(e) => setImagen(e.target.value)}
-/>
+          <form onSubmit={añadir}>
+            <label>Imagen del Producto:</label>
+            <input
+              type="text"
+              value={imagen}
+              onChange={(e) => setImagen(e.target.value)}
+            />
+            {errors.imagen && <span>{errors.imagen}</span>}
             <br />
 
             <label>Nombre del Producto:</label>
-          <input 
-          type="text" 
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
-/>
-                      {errors.username && <span>{errors.username}</span>}
+            <input
+              type="text"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+            />
+            {errors.nombre && <span>{errors.nombre}</span>}
+            <br />
 
-          <br />
-          <div class="dropdown">
-            <button class="dropbtn" value={clase}>Clase</button>
-            <div class="dropdown-content">
-             <a href="#">Clasicas</a>
-             <a href="#">Link 2</a>
-             <a href="#">Link 3</a>
-            </div>
-          </div>
+            <label>Clase:</label>
+            <input
+              type="text"
+              value={clase}
+              onChange={(e) => setClase(e.target.value)}
+            />
+            <br />
 
-            <label >Precio del Producto:</label>
-          <input 
-          type="number" 
-          value={precio}
-          onChange={(e) => setPrecio(e.target.value)}
-/>
-          <br />
+            <label>Precio del Producto:</label>
+            <input
+              type="number"
+              value={precio}
+              onChange={(e) => setPrecio(e.target.value)}
+            />
+            {errors.precio && <span>{errors.precio}</span>}
+            <br />
 
-          <input type="submit" onClick={añadir}/>
+            <button type="submit">Agregar</button>
+          </form>
         </ModalContent>
       </Modal>
     </div>
