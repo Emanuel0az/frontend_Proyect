@@ -60,7 +60,7 @@ console.log(products);
               {product.clase}
             </Card.Text>
             <Card.Text>
-              {product.precio}
+            ₡{product.precio}
             </Card.Text>
             <div className='btn_cards'>
               <Button variant="primary" className='btns_card'>Buy</Button>
