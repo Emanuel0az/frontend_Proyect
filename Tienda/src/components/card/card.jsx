@@ -7,11 +7,13 @@ import { remove_product } from '../../services/deleteApi';
 import {updateProduct} from '../../services/updateApi'
 
 function CardComponent() {
+
   const [boton, setBoton] = useState('none');
   const [products, setProducts] = useState([]);
   const [input, setInput] = useState('none')
   const [word, setWord] = useState('block')
 
+  
   useEffect(() => {
     if (localStorage.getItem('Admin_ID') === 'ADMIN') {
       setBoton('block');
