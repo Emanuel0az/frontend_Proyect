@@ -19,9 +19,9 @@ export default function AddForm() {
 
   const validate = () => {
     let inputErrors = {};
-    if (!imagen) inputErrors.imagen = 'La imagen es requerida';
-    if (!nombre) inputErrors.nombre = 'El nombre es requerido';
-    if (!precio) inputErrors.precio = 'El precio es requerido';
+    if (!imagen) inputErrors.imagen = '';
+    if (!nombre) inputErrors.nombre = '';
+    if (!precio) inputErrors.precio = '';
     return inputErrors;
   };
 
@@ -30,7 +30,8 @@ export default function AddForm() {
     const inputErrors = validate();
     if (Object.keys(inputErrors).length === 0) {
       try {
-        const result = await addPost(imagen, nombre, precio);
+        const result = await addPost(imagen, nombre, clase, precio);
+        console.log('Resultado del API:', result);
         if (result) {
           alert('Artículo Registrado');
           setImagen('');
@@ -65,13 +66,15 @@ export default function AddForm() {
         slots={{ backdrop: StyledBackdrop }}
       >
         <ModalContent sx={{ width: 400 }}>
-          <form onSubmit={añadir}>
+          <form>
             <label>Imagen del Producto:</label>
             <input
               type="text"
               value={imagen}
               onChange={(e) => setImagen(e.target.value)}
+              className='input_add'
             />
+            <br />
             {errors.imagen && <span>{errors.imagen}</span>}
             <br />
 
@@ -80,28 +83,38 @@ export default function AddForm() {
               type="text"
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
+              className='input_add'
             />
+            <br />
+
             {errors.nombre && <span>{errors.nombre}</span>}
             <br />
 
             <label>Clase:</label>
+            <br />
             <input
               type="text"
               value={clase}
               onChange={(e) => setClase(e.target.value)}
+              className='input_add'
             />
+            <br />
             <br />
 
             <label>Precio del Producto:</label>
+            <br />
+
             <input
               type="number"
               value={precio}
               onChange={(e) => setPrecio(e.target.value)}
+              className='input_add'
             />
+            <br />
             {errors.precio && <span>{errors.precio}</span>}
             <br />
 
-            <button type="submit">Agregar</button>
+            <button type="submit" onClick={añadir}>Agregar</button>
           </form>
         </ModalContent>
       </Modal>

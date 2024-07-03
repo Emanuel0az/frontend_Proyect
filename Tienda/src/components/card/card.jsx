@@ -1,11 +1,12 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import React, { useState, useEffect } from 'react';
-import './card.css'
+import { add_products } from '../../services/getApi';
+import './card.css';
 
-function card() {
-
+function CardComponent() {
   const [boton, setBoton] = useState('none');
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     if (localStorage.getItem('Admin_ID') === 'ADMIN') {
@@ -13,25 +14,63 @@ function card() {
     } else {
       setBoton('none');
     }
-  }, []);
-  function edit_Put (){
 
+  })
+
+  function edit_Put() {
+  
   }
+
+  useEffect(() =>{
+    const getFuncion = async () => {
+      try {
+          const get = await add_products();
+          if (!Array.isArray(get)) {
+              throw new Error('La respuesta de la API no es un array');
+          }
+          const datos = get.map((producto) => {
+  
+              console.log(producto.nombre);
+              console.log(producto.clase);
+              
+          });
+          console.log(get);
+          setProducts(get)
+      } catch (error) {
+          console.error('Error al obtener productos:', error);
+      }
+      
+  }
+  getFuncion()
+  },[]) 
+  
+
+
+
+console.log(products);
+
   return (
-    <Card style={{ width: '14rem' }} className='card'>
-      <Card.Img variant="top" src="https://th.bing.com/th/id/OIP.kuhj7yX2cmUrVPifutORYAHaHa?rs=1&pid=ImgDetMain" className='img_card'/>
-      <Card.Body>
-        <Card.Title>Titulo de la Gorra</Card.Title>
-        <Card.Text>
-          Precio de la Gorra
-        </Card.Text>
-        <div className='btn_cards'>
-        <Button variant="primary" className='btns_card'>Buy</Button>
-        <Button variant="primary" className='btns_card' onClick={edit_Put} style={{ display: boton }}>Edit</Button>
-        </div>
-      </Card.Body>
-    </Card>
+    <div className='cont_card'>
+      {products.map(product => (
+        <Card key={product.id} style={{ width: '14rem' }} className='card'>
+          <Card.Img variant="top" src={product.imagen} className='img_card' />
+          <Card.Body>
+            <Card.Title>{product.nombre}</Card.Title>
+            <Card.Text>
+              {product.clase}
+            </Card.Text>
+            <Card.Text>
+              {product.precio}
+            </Card.Text>
+            <div className='btn_cards'>
+              <Button variant="primary" className='btns_card'>Buy</Button>
+              <Button variant="primary" className='btns_card' onClick={edit_Put} style={{ display: boton }}>Edit</Button>
+            </div>
+          </Card.Body>
+        </Card>
+      ))}
+    </div>
   );
 }
 
-export default card;
+export default CardComponent;

@@ -1,16 +1,25 @@
 {
   "productos": [
     {
-      "id": "1",
-      "gorra": "gorras",
-      "clase": "ramdom",
-      "precio": "23000"
+      "id": "d97c",
+      "imagen": "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/1a89d685-7baf-4266-b33f-a50f4c5b872e/gorra-swoosh-estructurada-drifit-adv-club-6CsGQs.png",
+      "nombre": "nike",
+      "clase": "clasica",
+      "precio": "20000"
     },
     {
-      "id": "d97c",
-      "img": "asadasadadasdadad",
-      "item": "nike",
-      "tipo": "20000"
+      "id": "f67b",
+      "imagen": "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/1a89d685-7baf-4266-b33f-a50f4c5b872e/gorra-swoosh-estructurada-drifit-adv-club-6CsGQs.png",
+      "nombre": "adidas",
+      "clase": "deportiva",
+      "precio": "10000"
+    },
+    {
+      "id": "0eaf",
+      "imagen": "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/73b310c9-8f12-4e57-8477-b53476ba6a8b/gorra-estructurada-con-cierre-a-presi%C3%B3n-dri-fit-rise-qzcBkN.png",
+      "nombre": "nike_blanca",
+      "clase": "deportiva",
+      "precio": "15000"
     }
   ],
   "usuarios": [

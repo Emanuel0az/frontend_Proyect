@@ -1,14 +1,14 @@
-export const addPost = async (imagen, nombre, precio) => {
+export const addPost = async (imagen, nombre, clase, precio) => {
     try {
       const response = await fetch('http://localhost:3002/productos', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ imagen, nombre, precio }),
+        body: JSON.stringify({ imagen, nombre, clase, precio }),
       });
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error('');
       }
       return await response.json();
     } catch (error) {

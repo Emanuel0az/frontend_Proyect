@@ -11,3 +11,8 @@
     width: 223px;
     height: 200px;
 }
+
+.cont_card {
+    display: flex;
+    gap: 20px;
+}
