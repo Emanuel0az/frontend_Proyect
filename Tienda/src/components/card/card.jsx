@@ -13,7 +13,7 @@ function CardComponent() {
   const [input, setInput] = useState('none')
   const [word, setWord] = useState('block')
 
-  
+
   useEffect(() => {
     if (localStorage.getItem('Admin_ID') === 'ADMIN') {
       setBoton('block');
@@ -38,7 +38,7 @@ function CardComponent() {
 
     try {
       await updateProduct();
-      setProducts(products.filter(product => product.id !== id));
+      setProducts(products.filter(product => product.id === id));
       alert('Producto actualizado')
     } catch (error) {
       console.error('Error al actualizar el producto:', error);
