@@ -2,6 +2,7 @@ import Navbar_home  from "/Users/AMD/Desktop/frontend_Proyect/Tienda/src/compone
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from '../../components/card/card'
 import React from 'react'
+// import DarkVariantExample from '../../components/carrousel/carrousel'
 const admin = () => {
 
 
@@ -9,6 +10,7 @@ const admin = () => {
   return (
     <div>
         <h1>Home</h1>
+        {/* <DarkVariantExample /> */}
         <Card/>
         <Navbar_home/>
         

@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import React, { useState, useEffect } from 'react';
 import { add_products } from '../../services/getApi';
 import './card.css';
+import { remove_product } from '../../services/deleteApi';
 
 function CardComponent() {
   const [boton, setBoton] = useState('none');
@@ -17,10 +18,25 @@ function CardComponent() {
 
   })
 
-  function edit_Put() {
+  const edit_Put = async () =>{
   
+
   }
 
+
+  const remover = async (id) => {
+    try {
+      await remove_product(id);
+      setProducts(products.filter(product => product.id !== id));
+      alert('Producto eliminado')
+    } catch (error) {
+      console.error('Error al eliminar el producto:', error);
+    }
+  };
+
+
+
+  
   useEffect(() =>{
     const getFuncion = async () => {
       try {
@@ -65,6 +81,7 @@ console.log(products);
             <div className='btn_cards'>
               <Button variant="primary" className='btns_card'>Buy</Button>
               <Button variant="primary" className='btns_card' onClick={edit_Put} style={{ display: boton }}>Edit</Button>
+              <Button variant="primary" className='btns_card' onClick={() => remover(product.id)} style={{ display: boton }} >🗑️</Button>
             </div>
           </Card.Body>
         </Card>
