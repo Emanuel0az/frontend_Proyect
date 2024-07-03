@@ -4,10 +4,13 @@ import React, { useState, useEffect } from 'react';
 import { add_products } from '../../services/getApi';
 import './card.css';
 import { remove_product } from '../../services/deleteApi';
+import {updateProduct} from '../../services/updateApi'
 
 function CardComponent() {
   const [boton, setBoton] = useState('none');
   const [products, setProducts] = useState([]);
+  const [input, setInput] = useState('none')
+  const [word, setWord] = useState('block')
 
   useEffect(() => {
     if (localStorage.getItem('Admin_ID') === 'ADMIN') {
@@ -18,8 +21,26 @@ function CardComponent() {
 
   })
 
+  let estado = 'EDITOR'
+
   const edit_Put = async () =>{
-  
+    localStorage.setItem('Edicion',estado)
+    if (localStorage.getItem('Edicion') === 'EDITOR') {
+      setInput('block')
+      setWord('none')
+    }else {
+      setInput('none')
+      setWord('block')
+    }
+
+
+    try {
+      await updateProduct();
+      setProducts(products.filter(product => product.id !== id));
+      alert('Producto actualizado')
+    } catch (error) {
+      console.error('Error al actualizar el producto:', error);
+    }
 
   }
 
@@ -71,13 +92,19 @@ console.log(products);
         <Card key={product.id} style={{ width: '14rem' }} className='card'>
           <Card.Img variant="top" src={product.imagen} className='img_card' />
           <Card.Body>
-            <Card.Title>{product.nombre}</Card.Title>
-            <Card.Text>
+            <div className='cont_edit'>
+            <Card.Title style={{ display: word }}>{product.nombre}
+             </Card.Title>
+             <input style={{ display: input }} className='input_edit' placeholder={product.nombre}></input>
+            <Card.Text style={{ display: word }}>
               {product.clase}
             </Card.Text>
-            <Card.Text>
+            <input style={{ display: input }} placeholder={product.clase} className='input_edit'></input>
+            <Card.Text style={{ display: word }}>
             ₡{product.precio}
             </Card.Text>
+            <input style={{ display: input }} placeholder={product.precio} className='input_edit'></input>
+            </div>
             <div className='btn_cards'>
               <Button variant="primary" className='btns_card'>Buy</Button>
               <Button variant="primary" className='btns_card' onClick={edit_Put} style={{ display: boton }}>Edit</Button>

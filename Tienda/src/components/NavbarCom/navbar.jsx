@@ -22,10 +22,8 @@ function Navbar_home() {
 
   function remove() {
     localStorage.removeItem('Admin_ID')
-    removido = true
-    if (removido === true) {
-      
-    }
+    localStorage.removeItem('Edicion')
+    
   }
 
   function agregar() {
@@ -49,12 +47,12 @@ function Navbar_home() {
               </NavDropdown.Item>
               <NavDropdown.Item href="#">Something</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#" style={{ display: boton }} onClick={agregar}>
+              <NavDropdown.Item style={{ display: boton }} onClick={agregar} className='addfomr'>
                 <AddForm />
               </NavDropdown.Item>
-              <button className='btns_nav' onClick={remove} style={{ display: boton }}><Link to="/home" className="nav-links">
+              <NavDropdown.Item className='btns_nav' onClick={remove} style={{ display: boton }}><Link to="/home" className="nav-links">
         salir
-            </Link></button>
+            </Link></NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Nav>
