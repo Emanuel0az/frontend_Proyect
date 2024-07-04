@@ -1,11 +1,11 @@
-export async function updateProduct(id) {
+export async function updateProduct(id,nombre,clase,precio,imagen) {
     try {
         const response = await fetch(`http://localhost:3002/productos/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify()
+            body: JSON.stringify({id,nombre,clase,precio,imagen})
         });
 
         if (response.ok) {
