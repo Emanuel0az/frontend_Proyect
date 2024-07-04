@@ -5,10 +5,13 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AddForm from '../addForm/addForm';
+import Buscar from '../../components/barraBusqueda/buscar'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './navbar.css'
 
+
 function Navbar_home() {
+  
   const [boton, setBoton] = useState('none');
 
   useEffect(() => {
@@ -31,6 +34,7 @@ function Navbar_home() {
   }
   
   return (
+
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand href="home">Shop</Navbar.Brand>
@@ -56,6 +60,7 @@ function Navbar_home() {
             </NavDropdown>
           </Nav>
           <Nav>
+            <Buscar />
             <Nav.Link href="register">Registrate</Nav.Link>
             <Nav.Link href="login">
               Iniciar Sesion

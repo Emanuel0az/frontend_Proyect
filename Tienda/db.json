@@ -2,10 +2,24 @@
   "productos": [
     {
       "id": "0eaf",
-      "nombre": "hjkkhk",
-      "clase": "hjkhjk",
-      "precio": "445454",
+      "nombre": "Gorra Jordan_negro",
+      "clase": "Deportiva",
+      "precio": "22000",
       "imagen": "https://tiendaspls.com/wp-content/uploads/2023/09/fd5186-010_1.jpg"
+    },
+    {
+      "id": "1c90",
+      "nombre": "gorra cafe",
+      "clase": "deportiva",
+      "precio": "65432",
+      "imagen": "kjhgfds"
+    },
+    {
+      "id": "57b9",
+      "imagen": "xdd",
+      "nombre": "camisa",
+      "clase": "ddad",
+      "precio": "3"
     }
   ],
   "usuarios": [
