@@ -16,9 +16,6 @@ function CardComponent() {
   const [precio, setPrecio] = useState('');
   const [editId, setEditId] = useState(null);
 
-
-
-
   useEffect(() => {
     if (localStorage.getItem('Admin_ID') === 'ADMIN') {
       setBoton('block');
@@ -45,6 +42,7 @@ function CardComponent() {
   };
 
   const guardar = async (id,imagen) => {
+    console.log(id, nombre, clase, precio);
     try {
        updateProduct(id, nombre, clase, precio,imagen);
       setProducts(products.map(product => 
