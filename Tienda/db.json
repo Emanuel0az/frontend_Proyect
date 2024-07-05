@@ -6,6 +6,13 @@
       "clase": "hjkhjk",
       "precio": "445454",
       "imagen": "https://tiendaspls.com/wp-content/uploads/2023/09/fd5186-010_1.jpg"
+    },
+    {
+      "id": "8d1d",
+      "imagen": "fghjk",
+      "nombre": "gorro",
+      "clase": "clasico",
+      "precio": "10000"
     }
   ],
   "usuarios": [
