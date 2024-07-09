@@ -5,6 +5,7 @@ import { add_products } from '../../services/getApi';
 import './card.css';
 import { remove_product } from '../../services/deleteApi';
 import { updateProduct } from '../../services/updateApi';
+import swal from 'sweetalert';
 
 function CardComponent({ buscador }) {
   const [boton, setBoton] = useState('none');
@@ -50,20 +51,42 @@ function CardComponent({ buscador }) {
     }
   };
 
+  function doble_remove(e) {
+
+    let idEvent = e.target.id // variable que contiene el id del producto
+    console.log(e.target.id)
+    swal({
+      title: 'Eliminar',
+      text: 'Esta seguro que deseas eliminar este producto?',
+      icon: 'warning',
+      buttons: ['No', 'Si']
+    }).then(respuesta => {
+      if (respuesta) {
+        swal({
+          text: 'El producto ha sido eliminado',
+          icon: 'success',
+          timer:'8000'
+        })
+        
+        
+          remover(idEvent)
+      }
+    })
+  }
+
   const remover = async (id) => {
     try {
       await remove_product(id);
       setProducts(products.filter(product => product.id !== id));
-      alert('Producto eliminado');
     } catch (error) {
       console.error('Error al eliminar el producto:', error);
-      alert('Hubo un problema al eliminar el recurso: ' + error.message);
+      // alert('Hubo un problema al eliminar el recurso: ' + error.message);
     }
   };
 
   const obtener = useCallback(async () => {
     const get = await add_products();
-    console.log(get);
+    // console.log(get);
     setProducts(get);
   }, []);
 
@@ -121,7 +144,10 @@ function CardComponent({ buscador }) {
               )}
             </div>
             <div className='btn_cards'>
-              <Button variant="primary" className='btns_card'>Buy</Button>
+              <Button 
+              variant="primary" 
+              className='btns_card'
+              >Buy</Button>
               <Button
                 variant="primary"
                 className='btns_card'
@@ -131,7 +157,8 @@ function CardComponent({ buscador }) {
               <Button
                 variant="primary"
                 className='btns_card'
-                onClick={() => remover(product.id)}
+                id={product.id} // obtiene el id de los productos
+                onClick={(e) => doble_remove(e)} // creamos un evento y lo enviamos a la funcion 
                 style={{ display: boton }}
               >🗑️</Button>
             </div>

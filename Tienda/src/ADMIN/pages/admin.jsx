@@ -1,20 +1,18 @@
-import Navbar_home  from "/Users/AMD/Desktop/frontend_Proyect/Tienda/src/components/NavbarCom/navbar"
+import Navbar_home  from "/Users/Dell/Desktop/frontend_Proyect/Tienda/src/components/NavbarCom/navbar"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from '../../components/card/card'
+import React, { useState } from 'react'
 
-
-
-import React from 'react'
 
 const admin = () => {
-
+  const [buscador, setBuscador] = useState('');
 
 
   return (
     <div>
-        <h1>Home</h1>
-        <Card/>
-        <Navbar_home/>
+    
+        <Navbar_home onSearch={setBuscador} />
+      <Card buscador={buscador} />
 
     </div>
   )
