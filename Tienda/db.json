@@ -6,6 +6,13 @@
       "clase": "deportiva",
       "precio": "10000",
       "imagen": "https://tiendaspls.com/wp-content/uploads/2023/09/fd5186-010_1.jpg"
+    },
+    {
+      "id": "22f9",
+      "imagen": "https://www.plasticosur.com/images/thumbs/0184829_bola33025-gorra-marron_550.jpeg",
+      "nombre": "gorro_marron",
+      "clase": "Invierno",
+      "precio": "5000"
     }
   ],
   "usuarios": [

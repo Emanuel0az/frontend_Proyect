@@ -1,16 +1,19 @@
 import Navbar_home  from "../components/NavbarCom/navbar"
+import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from '../components/card/card'
-import React from 'react'
+
 
 
 
 const Home = () => {
+  const [buscador, setBuscador] = useState('');
+
   return (
     <div>
-        <h1>Home</h1>
-        <Card/>
-        <Navbar_home/>
+        
+        <Navbar_home onSearch={setBuscador} />
+      <Card buscador={buscador} />
         
     </div>
   )

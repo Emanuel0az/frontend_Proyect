@@ -6,11 +6,10 @@ import './card.css';
 import { remove_product } from '../../services/deleteApi';
 import { updateProduct } from '../../services/updateApi';
 
-function CardComponent() {
+function CardComponent({ buscador }) {
   const [boton, setBoton] = useState('none');
   const [products, setProducts] = useState([]);
-  const [input, setInput] = useState('none');
-  const [word, setWord] = useState('block');
+  const [search, setSearch] = useState([]);
   const [nombre, setNombre] = useState('');
   const [clase, setClase] = useState('');
   const [precio, setPrecio] = useState('');
@@ -29,30 +28,23 @@ function CardComponent() {
   const edit_Put = (producto) => {
     localStorage.setItem('Edicion', estado);
     if (localStorage.getItem('Edicion') === 'EDITOR') {
-      setInput('block');
-      setWord('none');
       setNombre(producto.nombre);
       setClase(producto.clase);
       setPrecio(producto.precio);
       setEditId(producto.id);
-    } else {
-      setInput('none');
-      setWord('block');
     }
   };
 
-  const guardar = async (id,imagen) => {
+  const guardar = async (id, imagen) => {
     console.log(id, nombre, clase, precio);
     try {
-       updateProduct(id, nombre, clase, precio,imagen);
-      setProducts(products.map(product => 
-        product.id === editId 
-          ? { ...product, nombre, clase, precio } 
+      await updateProduct(id, nombre, clase, precio, imagen);
+      setProducts(products.map(product =>
+        product.id === editId
+          ? { ...product, nombre, clase, precio }
           : product
       ));
-      // alert('Producto actualizado');
-      setInput('none');
-      setWord('block');
+      setEditId(null);
     } catch (error) {
       console.error('Error al actualizar el producto:', error);
     }
@@ -65,6 +57,7 @@ function CardComponent() {
       alert('Producto eliminado');
     } catch (error) {
       console.error('Error al eliminar el producto:', error);
+      alert('Hubo un problema al eliminar el recurso: ' + error.message);
     }
   };
 
@@ -78,55 +71,67 @@ function CardComponent() {
     obtener();
   }, [obtener]);
 
-  console.log(products);
+  useEffect(() => {
+    setSearch(
+      products.filter(product =>
+        product.nombre.toLowerCase().includes(buscador.toLowerCase())
+      )
+    );
+  }, [buscador, products]);
 
   return (
     <div className='cont_card'>
-      {products.map(product => (
+      {search.map(product => (
         <Card key={product.id} style={{ width: '14rem' }} className='card'>
           <Card.Img variant="top" src={product.imagen} className='img_card' />
           <Card.Body>
             <div className='cont_edit'>
-              <Card.Title style={{ display: word }}>{product.nombre}</Card.Title>
-              <input 
-                style={{ display: input }} 
-                className='input_edit' 
-                placeholder={product.nombre}
-                onChange={(e) => setNombre(e.target.value)}
-              />
-              <Card.Text style={{ display: word }}>{product.clase}</Card.Text>
-              <input 
-                style={{ display: input }} 
-                placeholder={product.clase} 
-                className='input_edit'
-                onChange={(e) => setClase(e.target.value)}
-              />
-              <Card.Text style={{ display: word }}>₡{product.precio}</Card.Text>
-              <input 
-                style={{ display: input }} 
-                placeholder={product.precio} 
-                className='input_edit'     
-                onChange={(e) => setPrecio(e.target.value)}
-              />      
-              <Button 
-                variant="primary" 
-                className='btns_card' 
-                onClick={() => guardar(product.id,product.imagen)} 
-                style={{ display: input }}
-              >✔️</Button>
+              {editId === product.id ? (
+                <>
+                  <input
+                    className='input_edit'
+                    placeholder={product.nombre}
+                    value={nombre}
+                    onChange={(e) => setNombre(e.target.value)}
+                  />
+                  <input
+                    placeholder={product.clase}
+                    className='input_edit'
+                    value={clase}
+                    onChange={(e) => setClase(e.target.value)}
+                  />
+                  <input
+                    placeholder={product.precio}
+                    className='input_edit'
+                    value={precio}
+                    onChange={(e) => setPrecio(e.target.value)}
+                  />
+                  <Button
+                    variant="primary"
+                    className='btns_card'
+                    onClick={() => guardar(product.id, product.imagen)}
+                  >✔️</Button>
+                </>
+              ) : (
+                <>
+                  <Card.Title>{product.nombre}</Card.Title>
+                  <Card.Text>{product.clase}</Card.Text>
+                  <Card.Text>₡{product.precio}</Card.Text>
+                </>
+              )}
             </div>
             <div className='btn_cards'>
               <Button variant="primary" className='btns_card'>Buy</Button>
-              <Button 
-                variant="primary" 
-                className='btns_card' 
-                onClick={() => edit_Put(product)} 
+              <Button
+                variant="primary"
+                className='btns_card'
+                onClick={() => edit_Put(product)}
                 style={{ display: boton }}
-              >Edit</Button>              
-              <Button 
-                variant="primary" 
-                className='btns_card' 
-                onClick={() => remover(product.id)} 
+              >Edit</Button>
+              <Button
+                variant="primary"
+                className='btns_card'
+                onClick={() => remover(product.id)}
                 style={{ display: boton }}
               >🗑️</Button>
             </div>

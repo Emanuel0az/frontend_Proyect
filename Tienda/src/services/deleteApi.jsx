@@ -1,8 +1,6 @@
-export async function remove_product(id) {
-    const apiUrl = `http://localhost:3002/productos/${id}`;
-  
+export const remove_product = async (id) => {
     try {
-      const response = await fetch(apiUrl, {
+      const response = await fetch(`http://localhost:3002/productos/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -13,10 +11,12 @@ export async function remove_product(id) {
         throw new Error('Error al eliminar el recurso');
       }
   
-      const data = await response.json(); // Si la API devuelve JSON
-      console.log('Recurso eliminado con éxito:', data);
+      return await response.json();
     } catch (error) {
-      console.error('Hubo un problema al eliminar el recurso:', error);
+      console.error('Error al eliminar el producto', error);
+      throw new Error('Error al eliminar el recurso');
     }
-  }
+  };
+  
+
   
