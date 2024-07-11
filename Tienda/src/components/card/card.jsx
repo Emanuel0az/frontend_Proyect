@@ -1,21 +1,24 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import React, { useState, useEffect, useCallback } from 'react';
-import { add_products } from '../../services/getApi';
-import './card.css';
-import { remove_product } from '../../services/deleteApi';
-import { updateProduct } from '../../services/updateApi';
-import swal from 'sweetalert';
+import Button from 'react-bootstrap/Button'; // Importa el componente de botón de la librería React-Bootstrap
+import Card from 'react-bootstrap/Card'; // Importa el componente de tarjeta de la librería React-Bootstrap
+import React, { useState, useEffect, useCallback } from 'react'; // Importa funciones de React para manejar el estado y efectos secundarios
+import { add_products } from '../../services/getApi'; // Importa la función para obtener productos
+import './card.css'; // Importa estilos personalizados para las tarjetas
+import { remove_product } from '../../services/deleteApi'; // Importa la función para eliminar productos
+import { updateProduct } from '../../services/updateApi'; // Importa la función para actualizar productos
+import swal from 'sweetalert'; // Importa la librería para mostrar alertas bonitas
 
+// Define un componente llamado CardComponent que recibe un prop llamada 'buscador'
 function CardComponent({ buscador }) {
-  const [boton, setBoton] = useState('none');
-  const [products, setProducts] = useState([]);
-  const [search, setSearch] = useState([]);
-  const [nombre, setNombre] = useState('');
-  const [clase, setClase] = useState('');
-  const [precio, setPrecio] = useState('');
-  const [editId, setEditId] = useState(null);
+  // Define varios estados para manejar datos y la interfaz
+  const [boton, setBoton] = useState('none'); // Estado para mostrar u ocultar botones de edición
+  const [products, setProducts] = useState([]); // Estado para almacenar la lista de productos
+  const [search, setSearch] = useState([]); // Estado para almacenar la lista de productos filtrados por búsqueda
+  const [nombre, setNombre] = useState(''); // Estado para almacenar el nombre del producto a editar
+  const [clase, setClase] = useState(''); // Estado para almacenar la clase del producto a editar
+  const [precio, setPrecio] = useState(''); // Estado para almacenar el precio del producto a editar
+  const [editId, setEditId] = useState(null); // Estado para almacenar el ID del producto que se está editando
 
+  //se ejecuta al cargar el componente para mostrar los botones de edición si el usuario es admin
   useEffect(() => {
     if (localStorage.getItem('Admin_ID') === 'ADMIN') {
       setBoton('block');
@@ -24,8 +27,9 @@ function CardComponent({ buscador }) {
     }
   }, []);
 
-  const estado = 'EDITOR';
+  const estado = 'EDITOR'; // Define una constante para indicar el estado de edición
 
+  // Función para preparar la edición de un producto
   const edit_Put = (producto) => {
     localStorage.setItem('Edicion', estado);
     if (localStorage.getItem('Edicion') === 'EDITOR') {
@@ -36,8 +40,8 @@ function CardComponent({ buscador }) {
     }
   };
 
+  // Función para guardar los cambios de un producto editado
   const guardar = async (id, imagen) => {
-    console.log(id, nombre, clase, precio);
     try {
       await updateProduct(id, nombre, clase, precio, imagen);
       setProducts(products.map(product =>
@@ -51,6 +55,7 @@ function CardComponent({ buscador }) {
     }
   };
 
+  // Función para confirmar la actualización de un producto con una alerta
   const confirmarActualizar = async (id, imagen) => {
     swal({
       title: 'Actualizar',
@@ -69,9 +74,9 @@ function CardComponent({ buscador }) {
     });
   };
 
+  // Función para confirmar la eliminación de un producto con una alerta
   function doble_remove(e) {
-    let idEvent = e.target.id; // variable que contiene el id del producto
-    console.log(e.target.id);
+    let idEvent = e.target.id;
     swal({
       title: 'Eliminar',
       text: '¿Está seguro de que desea eliminar este producto?',
@@ -84,32 +89,33 @@ function CardComponent({ buscador }) {
           icon: 'success',
           timer: 8000,
         });
-
         remover(idEvent);
       }
     });
   }
 
+  // Función para eliminar un producto de la lista
   const remover = async (id) => {
     try {
       await remove_product(id);
       setProducts(products.filter((product) => product.id !== id));
     } catch (error) {
       console.error('Error al eliminar el producto:', error);
-      // alert('Hubo un problema al eliminar el recurso: ' + error.message);
     }
   };
 
+  // Función para obtener la lista de productos
   const obtener = useCallback(async () => {
     const get = await add_products();
-    // console.log(get);
     setProducts(get);
   }, []);
 
+  // Efecto que se ejecuta al cargar el componente para obtener los productos
   useEffect(() => {
     obtener();
   }, [obtener]);
 
+  // Efecto que se ejecuta cuando cambia la búsqueda o la lista de productos
   useEffect(() => {
     setSearch(
       products.filter((product) =>
@@ -176,8 +182,8 @@ function CardComponent({ buscador }) {
               <Button
                 variant='primary'
                 className='btns_card'
-                id={product.id} // obtiene el id de los productos
-                onClick={(e) => doble_remove(e)} // creamos un evento y lo enviamos a la funcion 
+                id={product.id}
+                onClick={(e) => doble_remove(e)}
                 style={{ display: boton }}
               >
                 🗑️

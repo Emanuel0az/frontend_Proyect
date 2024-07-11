@@ -11,30 +11,35 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './navbar.css';
 
 function Navbar_home({ onSearch }) {
-  const [boton, setBoton] = useState('none');
-  const [buscador, setBuscador] = useState('');
+  const [boton, setBoton] = useState('none'); // Estado para mostrar u ocultar los botones de administrador
+  const [buscador, setBuscador] = useState(''); // Estado para controlar el valor del campo de búsqueda
 
+  // Efecto que se ejecuta una vez al cargar el componente
   useEffect(() => {
     if (localStorage.getItem('Admin_ID') === 'ADMIN') {
-      setBoton('block');
+      setBoton('block'); // Mostrar botones de administrador si el usuario es admin
     } else {
-      setBoton('none');
+      setBoton('none'); // Ocultar botones de administrador si el usuario no es admin
     }
   }, []);
 
+  // Función para eliminar valores guardados en el almacenamiento local y recargar la página
   function remove() {
     localStorage.removeItem('Admin_ID');
     localStorage.removeItem('Edicion');
+    window.location.reload(); // Recargar la página
   }
 
-  function agregar() {}
+  function agregar() {} // Función que actualmente no hace nada
 
+  // Función para manejar el evento de búsqueda
   const handleSearch = (event) => {
     setBuscador(event.target.value);
     onSearch(event.target.value);
   };
 
   return (
+    // Navbar importado de Bootstrap
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand href="home">Shop</Navbar.Brand>
@@ -42,8 +47,8 @@ function Navbar_home({ onSearch }) {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="about">Sobre Nosotros</Nav.Link>
-            <Nav.Link href="contacto">Contactanos</Nav.Link>
-            <NavDropdown title="Categorias" id="collapsible-nav-dropdown">
+            <Nav.Link href="contacto">Contáctanos</Nav.Link>
+            <NavDropdown title="Categorías" id="collapsible-nav-dropdown">
               <NavDropdown.Item href="#">Planas</NavDropdown.Item>
               <NavDropdown.Item href="#">Snapback</NavDropdown.Item>
               <NavDropdown.Item href="#">Béisbol</NavDropdown.Item>
@@ -52,7 +57,7 @@ function Navbar_home({ onSearch }) {
                 <AddForm />
               </NavDropdown.Item>
               <NavDropdown.Item className='btns_nav' onClick={remove} style={{ display: boton }}>
-                <Link to="/home" className="nav-links">
+                <Link to="/" className="nav-links">
                   salir
                 </Link>
               </NavDropdown.Item>
@@ -69,10 +74,9 @@ function Navbar_home({ onSearch }) {
             />
           </Form>
           <Nav>
-            <Nav.Link href="register">Registrate</Nav.Link>
-            <Nav.Link href="login">Iniciar Sesion</Nav.Link>
+            <Nav.Link href="register">Regístrate</Nav.Link>
+            <Nav.Link href="login">Iniciar Sesión</Nav.Link>
           </Nav>
-          
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -1,55 +1,60 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import { styled, css } from '@mui/system';
-import { Modal as BaseModal } from '@mui/base/Modal';
-import { addPost } from '../../services/postApi';
-import { useState } from 'react';
+import * as React from 'react'; // Importa todas las funciones de React
+import PropTypes from 'prop-types'; // Importa PropTypes para validación de propiedades
+import clsx from 'clsx'; // Importa clsx para manejar clases CSS condicionales
+import { styled, css } from '@mui/system'; // Importa funciones de estilización de MUI
+import { Modal as BaseModal } from '@mui/base/Modal'; // Importa el componente Modal de MUI
+import { addPost } from '../../services/postApi'; // Importa la función addPost para agregar un nuevo post
+import { useState } from 'react'; // Importa useState de React para manejar el estado
 
+// Componente principal que exportamos
 export default function AddForm() {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [open, setOpen] = useState(false); // Estado para controlar si el modal está abierto o cerrado
+  const handleOpen = () => setOpen(true); // Función para abrir el modal
+  const handleClose = () => setOpen(false); // Función para cerrar el modal
 
+  // Estados para controlar los valores de los campos del formulario
   const [imagen, setImagen] = useState('');
   const [clase, setClase] = useState('');
   const [nombre, setNombre] = useState('');
   const [precio, setPrecio] = useState('');
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({}); // Estado para controlar los errores de validación
 
+  // Función para validar los campos del formulario
   const validate = () => {
     let inputErrors = {};
-    if (!imagen) inputErrors.imagen = '';
-    if (!nombre) inputErrors.nombre = '';
-    if (!precio) inputErrors.precio = '';
+    if (!imagen) inputErrors.imagen = 'Campo obligatorio';
+    if (!nombre) inputErrors.nombre = 'Campo obligatorio';
+    if (!precio) inputErrors.precio = 'Campo obligatorio';
     return inputErrors;
   };
 
+  // Función para agregar un nuevo post cuando se envía el formulario
   const añadir = async (event) => {
-    event.preventDefault();
-    const inputErrors = validate();
-    if (Object.keys(inputErrors).length === 0) {
+    event.preventDefault(); // Evita el comportamiento por defecto del formulario
+    const inputErrors = validate(); // Valida los campos del formulario
+    if (Object.keys(inputErrors).length === 0) { // Si no hay errores
       try {
-        const result = await addPost(imagen, nombre, clase, precio);
-        console.log('Resultado del API:', result);
+        const result = await addPost(imagen, nombre, clase, precio); // Llama a la API para agregar el post
+        console.log('Resultado del API:', result); // Muestra el resultado en la consola
         if (result) {
-          alert('Artículo Registrado');
+          alert('Artículo Registrado'); // Muestra un mensaje de éxito
+          // Reinicia los campos del formulario
           setImagen('');
           setClase('');
           setNombre('');
           setPrecio('');
           setErrors({});
-          handleClose();
+          handleClose(); // Cierra el modal
         } else {
-          alert('Error al registrar el artículo');
+          alert('Error al registrar el artículo'); // Muestra un mensaje de error
         }
       } catch (error) {
-        alert('Hubo un error al enviar los datos a la API');
-        console.error(error);
+        alert('Hubo un error al enviar los datos a la API'); // Muestra un mensaje de error si la API falla
+        console.error(error); // Muestra el error en la consola
       }
     } else {
-      setErrors(inputErrors);
-      alert('Por favor, complete todos los campos requeridos');
+      setErrors(inputErrors); // Muestra los errores de validación
+      alert('Por favor, complete todos los campos requeridos'); // Muestra un mensaje de error si faltan campos
     }
   };
 
@@ -86,7 +91,6 @@ export default function AddForm() {
               className='input_add'
             />
             <br />
-
             {errors.nombre && <span>{errors.nombre}</span>}
             <br />
 
@@ -103,7 +107,6 @@ export default function AddForm() {
 
             <label>Precio del Producto:</label>
             <br />
-
             <input
               type="number"
               value={precio}
@@ -121,7 +124,6 @@ export default function AddForm() {
     </div>
   );
 }
-
 const Backdrop = React.forwardRef((props, ref) => {
   const { open, className, ...other } = props;
   return (

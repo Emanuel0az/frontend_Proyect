@@ -23,17 +23,10 @@
     },
     {
       "id": "dd8b",
-      "imagen": "https://img.sombreroshop.es/Gorra-Golf-Classic-99-Baseball-by-Nike-blanco.46078_rf5.jpg",
       "nombre": "fsfsd",
       "clase": "sf",
-      "precio": "343"
-    },
-    {
-      "id": "0d2c",
-      "imagen": "https://img.sombreroshop.es/Gorra-Golf-Classic-99-Baseball-by-Nike-blanco.46078_rf5.jpg",
-      "nombre": "sfsdf",
-      "clase": "fsdfdf",
-      "precio": "5"
+      "precio": "343",
+      "imagen": "https://img.sombreroshop.es/Gorra-Golf-Classic-99-Baseball-by-Nike-blanco.46078_rf5.jpg"
     },
     {
       "id": "7c8c",
@@ -44,10 +37,10 @@
     },
     {
       "id": "5ca0",
-      "imagen": "https://img.sombreroshop.es/Gorra-Golf-Classic-99-Baseball-by-Nike-blanco.46078_rf5.jpg",
       "nombre": "wfwf",
       "clase": "wefw",
-      "precio": "2234"
+      "precio": "90000",
+      "imagen": "https://img.sombreroshop.es/Gorra-Golf-Classic-99-Baseball-by-Nike-blanco.46078_rf5.jpg"
     },
     {
       "id": "7da3",
@@ -55,27 +48,6 @@
       "clase": "Snapback",
       "precio": "34000",
       "imagen": "https://ucarecdn.com/405de426-be69-454b-8f67-1532048dddbf/-/format/auto/-/preview/3000x3000/-/quality/lighter/vzla%20%20tricolor%20caps%20banner.jpg"
-    },
-    {
-      "id": "0e22",
-      "imagen": "https://ucarecdn.com/405de426-be69-454b-8f67-1532048dddbf/-/format/auto/-/preview/3000x3000/-/quality/lighter/vzla%20%20tricolor%20caps%20banner.jpg",
-      "nombre": "saf",
-      "clase": "adad",
-      "precio": "331"
-    },
-    {
-      "id": "7635",
-      "imagen": "https://ucarecdn.com/405de426-be69-454b-8f67-1532048dddbf/-/format/auto/-/preview/3000x3000/-/quality/lighter/vzla%20%20tricolor%20caps%20banner.jpg",
-      "nombre": "asd",
-      "clase": "adsf",
-      "precio": "4232"
-    },
-    {
-      "id": "748d",
-      "imagen": "https://ucarecdn.com/405de426-be69-454b-8f67-1532048dddbf/-/format/auto/-/preview/3000x3000/-/quality/lighter/vzla%20%20tricolor%20caps%20banner.jpg",
-      "nombre": "hgf",
-      "clase": "gddg",
-      "precio": "242432"
     }
   ],
   "usuarios": [
