@@ -2,10 +2,80 @@
   "productos": [
     {
       "id": "0eaf",
-      "nombre": "Gorra Nike_White",
-      "clase": "Deportiva",
+      "nombre": "Gorra ",
+      "clase": "Plana",
       "precio": "12000",
+      "imagen": "https://acdn.mitiendanube.com/stores/001/015/914/products/51-55e0958dec93a7982f16914391582073-240-0.png"
+    },
+    {
+      "id": "aba9",
+      "nombre": "sadaa",
+      "clase": "Snapback",
+      "precio": "321",
       "imagen": "https://img.sombreroshop.es/Gorra-Golf-Classic-99-Baseball-by-Nike-blanco.46078_rf5.jpg"
+    },
+    {
+      "id": "c211",
+      "imagen": "https://img.sombreroshop.es/Gorra-Golf-Classic-99-Baseball-by-Nike-blanco.46078_rf5.jpg",
+      "nombre": "asd",
+      "clase": "asda",
+      "precio": "45345"
+    },
+    {
+      "id": "dd8b",
+      "imagen": "https://img.sombreroshop.es/Gorra-Golf-Classic-99-Baseball-by-Nike-blanco.46078_rf5.jpg",
+      "nombre": "fsfsd",
+      "clase": "sf",
+      "precio": "343"
+    },
+    {
+      "id": "0d2c",
+      "imagen": "https://img.sombreroshop.es/Gorra-Golf-Classic-99-Baseball-by-Nike-blanco.46078_rf5.jpg",
+      "nombre": "sfsdf",
+      "clase": "fsdfdf",
+      "precio": "5"
+    },
+    {
+      "id": "7c8c",
+      "imagen": "https://img.sombreroshop.es/Gorra-Golf-Classic-99-Baseball-by-Nike-blanco.46078_rf5.jpg",
+      "nombre": "wer",
+      "clase": "erwe",
+      "precio": "23423"
+    },
+    {
+      "id": "5ca0",
+      "imagen": "https://img.sombreroshop.es/Gorra-Golf-Classic-99-Baseball-by-Nike-blanco.46078_rf5.jpg",
+      "nombre": "wfwf",
+      "clase": "wefw",
+      "precio": "2234"
+    },
+    {
+      "id": "7da3",
+      "nombre": "VZLA brand",
+      "clase": "Snapback",
+      "precio": "34000",
+      "imagen": "https://ucarecdn.com/405de426-be69-454b-8f67-1532048dddbf/-/format/auto/-/preview/3000x3000/-/quality/lighter/vzla%20%20tricolor%20caps%20banner.jpg"
+    },
+    {
+      "id": "0e22",
+      "imagen": "https://ucarecdn.com/405de426-be69-454b-8f67-1532048dddbf/-/format/auto/-/preview/3000x3000/-/quality/lighter/vzla%20%20tricolor%20caps%20banner.jpg",
+      "nombre": "saf",
+      "clase": "adad",
+      "precio": "331"
+    },
+    {
+      "id": "7635",
+      "imagen": "https://ucarecdn.com/405de426-be69-454b-8f67-1532048dddbf/-/format/auto/-/preview/3000x3000/-/quality/lighter/vzla%20%20tricolor%20caps%20banner.jpg",
+      "nombre": "asd",
+      "clase": "adsf",
+      "precio": "4232"
+    },
+    {
+      "id": "748d",
+      "imagen": "https://ucarecdn.com/405de426-be69-454b-8f67-1532048dddbf/-/format/auto/-/preview/3000x3000/-/quality/lighter/vzla%20%20tricolor%20caps%20banner.jpg",
+      "nombre": "hgf",
+      "clase": "gddg",
+      "precio": "242432"
     }
   ],
   "usuarios": [

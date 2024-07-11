@@ -3,19 +3,18 @@
     justify-content: space-between;
 }
 
+.img_card {
+  width: 100%;
+  height: 150px; /* Establece una altura fija para las imágenes */
+  object-fit: cover; /* Asegura que las imágenes se ajusten a las dimensiones sin distorsionarse */
+}
+
 .btns_card {
     width: 60px;
 }
 
-.img_card {
-    width: 222px;
-    height: 220px;
-}
 
-.cont_card {
-    display: flex;
-    gap: 20px;
-}
+
 
 .input_edit {
     max-width: 100.3%;
@@ -25,4 +24,12 @@
     display: grid;
     gap: 9px;
     padding-bottom: 9px;
+}
+.cont_card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 80px;
+  gap: 16px;
+  padding: 16px;
 }

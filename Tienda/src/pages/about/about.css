@@ -2,11 +2,35 @@
 
 .shop_name {
     position: relative;
-    margin-top: 30px;
+    /* margin-top: -10px;
+    margin-left: -400px;
+    padding-bottom: 40px; */
     display: flex;
-    justify-content: space-between;
-    /* width: 200px; */
-    /* border: 2px solid black; */
+    justify-content: center;
+    font-size: 2em;
+    color: #fff;
+}
+
+.history {
+    
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 50% 50%;
+    gap: 100px;
+    /* margin-left: -30px; */
+    font-size: 0.7em;
+    max-width: 1200px;
+    margin-bottom: 10px;
+}
+
+.img-sobre {
+    min-height: 500px;
+    max-width: 700px;
+    border-radius: 5%;
+}
+
+.title-sobre {
+    padding-top: 30px;
 }
 
 .contact_btn{
@@ -58,3 +82,4 @@
     margin-bottom: 15px;
     width: 100%;
 }
+

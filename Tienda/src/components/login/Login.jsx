@@ -69,9 +69,9 @@ function formlogin() {
 
 
   return (
-    <div>
+    <div className="form2">
           <div className="title">
-            <h2>Inicio de Sesión</h2>
+            <h2 className="title-login">Inicio de Sesión</h2>
             </div>
             <div className="login_css">
             <form onSubmit={handleSubmit}>

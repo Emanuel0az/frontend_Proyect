@@ -1,0 +1,96 @@
+/* Estilo global para asegurar que el contenedor principal ocupe al menos la altura completa de la ventana */
+
+
+header {
+  height: 60px; /* Ajusta según la altura de tu navbar */
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px; /* Espacio alrededor del contenido */
+  margin-top: 20px; /* Espacio superior para que no choquen los productos contra el navbar */
+  margin-bottom: 200px; /* Espacio inferior para el footer */
+}
+
+.footer {
+  background-color: rgb(255, 255, 255);
+  color: #333;
+  padding: 20px 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid #e7e7e7;
+  width: 100%;
+  position: relative;
+  margin-top: 65px;
+  bottom: 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+  max-width: 300px;
+  margin: 10px 20px;
+}
+
+.footer-section h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.footer-section p,
+.footer-section ul {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 5px;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.footer-section ul li a:hover {
+  color: #007bff;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons a {
+  text-decoration: none;
+  color: #333;
+  font-size: 20px;
+}
+
+.social-icons a:hover {
+  color: #007bff;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 10px 0;
+  border-top: 1px solid #e7e7e7;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #777;
+}

@@ -44,9 +44,9 @@ function Navbar_home({ onSearch }) {
             <Nav.Link href="about">Sobre Nosotros</Nav.Link>
             <Nav.Link href="contacto">Contactanos</Nav.Link>
             <NavDropdown title="Categorias" id="collapsible-nav-dropdown">
-              <NavDropdown.Item href="#">Clasicas</NavDropdown.Item>
-              <NavDropdown.Item href="#">Another action</NavDropdown.Item>
-              <NavDropdown.Item href="#">Something</NavDropdown.Item>
+              <NavDropdown.Item href="#">Planas</NavDropdown.Item>
+              <NavDropdown.Item href="#">Snapback</NavDropdown.Item>
+              <NavDropdown.Item href="#">Béisbol</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item style={{ display: boton }} onClick={agregar} className='addform'>
                 <AddForm />

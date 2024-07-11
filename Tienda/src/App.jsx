@@ -1,6 +1,7 @@
 import Routing from './routes/Routing'
 import Navbar_home  from "./components/NavbarCom/navbar"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from './components/footer/footer';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
 
        <Routing />
 
+      <Footer/>
       </div>
     
     </>

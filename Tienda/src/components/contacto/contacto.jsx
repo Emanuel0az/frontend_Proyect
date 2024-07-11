@@ -23,15 +23,15 @@ const contacto = () => {
 
   return (
     <div className="contact-container">
-      <div className="shop_name">Contacto</div>
+      <div className="shop_name20">Contacto</div>
         <p className='shop_parrafo'><strong>
-  Si tienes alguna pregunta, comentario o necesitas asistencia, <br />
-   no dudes en contactarnos. 
-  Estamos aquí para ayudarte y <br />
-   responder a todas tus inquietudes. <br /> Completa el formulario 
-  a continuación <br />
-   y nos pondremos en contacto contigo lo antes posible.</strong>
-</p>
+          Si tienes alguna pregunta, comentario o necesitas asistencia, <br />
+          no dudes en contactarnos. 
+          Estamos aquí para ayudarte y <br />
+          responder a todas tus inquietudes. <br /> Completa el formulario 
+          a continuación <br />
+          y nos pondremos en contacto contigo lo antes posible.</strong>
+        </p>
       <form className="contacto" onSubmit={handleSubmit}>
         <div className="mb-3">
         </div>

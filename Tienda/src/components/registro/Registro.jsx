@@ -44,7 +44,7 @@ function Formregistro() {
 
 
   return (
-  <div>
+  <div className="form2">
     <div className="title">
     <h2 className="title_regi">Registro</h2>
     </div>

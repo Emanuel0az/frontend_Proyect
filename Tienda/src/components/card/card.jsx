@@ -51,33 +51,49 @@ function CardComponent({ buscador }) {
     }
   };
 
-  function doble_remove(e) {
+  const confirmarActualizar = async (id, imagen) => {
+    swal({
+      title: 'Actualizar',
+      text: '¿Está seguro de que desea actualizar este producto?',
+      icon: 'warning',
+      buttons: ['No', 'Sí'],
+    }).then(async (respuesta) => {
+      if (respuesta) {
+        await guardar(id, imagen);
+        swal({
+          text: 'El producto ha sido actualizado',
+          icon: 'success',
+          timer: 8000,
+        });
+      }
+    });
+  };
 
-    let idEvent = e.target.id // variable que contiene el id del producto
-    console.log(e.target.id)
+  function doble_remove(e) {
+    let idEvent = e.target.id; // variable que contiene el id del producto
+    console.log(e.target.id);
     swal({
       title: 'Eliminar',
-      text: 'Esta seguro que deseas eliminar este producto?',
+      text: '¿Está seguro de que desea eliminar este producto?',
       icon: 'warning',
-      buttons: ['No', 'Si']
-    }).then(respuesta => {
+      buttons: ['No', 'Sí'],
+    }).then((respuesta) => {
       if (respuesta) {
         swal({
           text: 'El producto ha sido eliminado',
           icon: 'success',
-          timer:'8000'
-        })
-        
-        
-          remover(idEvent)
+          timer: 8000,
+        });
+
+        remover(idEvent);
       }
-    })
+    });
   }
 
   const remover = async (id) => {
     try {
       await remove_product(id);
-      setProducts(products.filter(product => product.id !== id));
+      setProducts(products.filter((product) => product.id !== id));
     } catch (error) {
       console.error('Error al eliminar el producto:', error);
       // alert('Hubo un problema al eliminar el recurso: ' + error.message);
@@ -96,7 +112,7 @@ function CardComponent({ buscador }) {
 
   useEffect(() => {
     setSearch(
-      products.filter(product =>
+      products.filter((product) =>
         product.nombre.toLowerCase().includes(buscador.toLowerCase())
       )
     );
@@ -104,9 +120,9 @@ function CardComponent({ buscador }) {
 
   return (
     <div className='cont_card'>
-      {search.map(product => (
+      {search.map((product) => (
         <Card key={product.id} style={{ width: '14rem' }} className='card'>
-          <Card.Img variant="top" src={product.imagen} className='img_card' />
+          <Card.Img variant='top' src={product.imagen} className='img_card' />
           <Card.Body>
             <div className='cont_edit'>
               {editId === product.id ? (
@@ -130,37 +146,42 @@ function CardComponent({ buscador }) {
                     onChange={(e) => setPrecio(e.target.value)}
                   />
                   <Button
-                    variant="primary"
+                    variant='primary'
                     className='btns_card'
-                    onClick={() => guardar(product.id, product.imagen)}
-                  >✔️</Button>
+                    onClick={() => confirmarActualizar(product.id, product.imagen)}
+                  >
+                    ✔️
+                  </Button>
                 </>
               ) : (
                 <>
-                  <Card.Title>{product.nombre}</Card.Title>
-                  <Card.Text>{product.clase}</Card.Text>
+                  <Card.Title><strong>{product.nombre}</strong></Card.Title>
+                  <Card.Text>Tipo: <strong> {product.clase}</strong></Card.Text>
                   <Card.Text>₡{product.precio}</Card.Text>
                 </>
               )}
             </div>
             <div className='btn_cards'>
-              <Button 
-              variant="primary" 
-              className='btns_card'
-              >Buy</Button>
+              <Button variant='primary' className='btns_card'>
+                Buy
+              </Button>
               <Button
-                variant="primary"
+                variant='primary'
                 className='btns_card'
                 onClick={() => edit_Put(product)}
                 style={{ display: boton }}
-              >Edit</Button>
+              >
+                Edit
+              </Button>
               <Button
-                variant="primary"
+                variant='primary'
                 className='btns_card'
                 id={product.id} // obtiene el id de los productos
                 onClick={(e) => doble_remove(e)} // creamos un evento y lo enviamos a la funcion 
                 style={{ display: boton }}
-              >🗑️</Button>
+              >
+                🗑️
+              </Button>
             </div>
           </Card.Body>
         </Card>

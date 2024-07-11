@@ -1,6 +1,7 @@
 
-h2 {
+.title-login {
     font-size: 30px;
+    color: white;
 }
 
 h1{
@@ -8,14 +9,7 @@ h1{
 
 }
 
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    /* background: linear-gradient(to right, rgb(255, 241, 195), rgb(255, 236, 175)); */
-    background-image:url(https://w.wallhaven.cc/full/45/wallhaven-45q6l1.jpg);
-}
+
 
 .login_css {
     display: flex;
@@ -46,7 +40,7 @@ body {
     border-radius: 8px;
     color: #363636;
     background-color: white;
-    border-bottom: solid 1px rgb(64,177,7);
+    border-bottom: solid 1px rgba(71, 3, 6, 0.7);
     padding: 10px;
     font-size: 23px;
     margin-bottom: 15px;
